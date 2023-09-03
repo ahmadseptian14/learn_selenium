@@ -19,6 +19,10 @@ public class registerPages {
     By zipCodeField = By.id("customer.address.zipCode");
     By phoneNumberField = By.id("customer.phoneNumber");
     By ssnField = By.id("customer.ssn");
+    By usernameField = By.id("customer.username");
+    By passwordField = By.id("customer.password");
+    By passwordConfirmationField = By.id("repeatedPassword");
+    By registerButton = By.xpath("//*[@id='customerForm']/table/tbody/tr[13]/td[2]/input");
 
 
     //    Method cick register button
@@ -34,5 +38,22 @@ public class registerPages {
         driver.findElement(zipCodeField).sendKeys(zipCode);
         driver.findElement(phoneNumberField).sendKeys(phoneNumber);
         driver.findElement(ssnField).sendKeys(ssn);
+    }
+
+    public void inputUsernamePassword(String username, String password){
+    driver.findElement(usernameField).sendKeys(username);
+    driver.findElement(passwordField).sendKeys(password);
+    }
+
+    public void inputPasswordConfirmation(String passwordConfirmation){
+        driver.findElement(passwordConfirmationField).sendKeys(passwordConfirmation);
+    }
+
+    public void inputInvalidPassowrdConfirmation(String invalidPasswordConfirmation) {
+        driver.findElement(passwordConfirmationField).sendKeys(invalidPasswordConfirmation);
+    }
+
+    public void clickRegisterButton(){
+        driver.findElement(registerButton).click();
     }
 }

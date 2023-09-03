@@ -56,18 +56,20 @@ public class Regis extends env {
 
     @And("User fill valid username and password")
     public void userFillValidUsernameAndPassword() {
-        driver.findElement(By.id("customer.username")).sendKeys("septian1960");
-        driver.findElement(By.id("customer.password")).sendKeys("12345");
+        registerPages inputCredential = new registerPages(driver);
+        inputCredential.inputUsernamePassword("septian1960", "12345");
     }
 
     @And("User input password confirmation")
     public void userInputPasswordConfirmation() {
-        driver.findElement(By.id("repeatedPassword")).sendKeys("12345");
+        registerPages passwordConfirmation = new registerPages(driver);
+        passwordConfirmation.inputPasswordConfirmation("12345");
     }
 
     @When("User click register button")
     public void userClickRegisterButton() {
-        driver.findElement(By.xpath("//*[@id='customerForm']/table/tbody/tr[13]/td[2]/input")).click();
+        registerPages registerButton = new registerPages(driver);
+        registerButton.clickRegisterButton();
     }
 
     @Then("User registration successfully")
@@ -81,7 +83,8 @@ public class Regis extends env {
 
     @And("User input invalid password confirmation")
     public void userInputInvalidPasswordConfirmation() {
-        driver.findElement(By.id("repeatedPassword")).sendKeys("111111");
+        registerPages passwordConfirmation = new registerPages(driver);
+        passwordConfirmation.inputInvalidPassowrdConfirmation("111111");
     }
 
     @Then("User get error password did not match")
