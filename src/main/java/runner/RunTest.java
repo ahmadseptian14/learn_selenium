@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "StepDef",
-        tags = "@register and @Positive",
+        tags = "@Github and @Positive and @CreateRepository",
         plugin = {"pretty", "html:target/RegressionReport.html"}
 
 )
